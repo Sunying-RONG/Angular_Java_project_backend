@@ -11,6 +11,7 @@ public class Lieu {
     private String nom;
     private float longitude;
     private float latitude;
+    @ManyToOne
     private String depart;
 //  Monument table must have a foreign key column "codeInsee" that references the Lieu table's "codeInsee" column.
 //    @OneToMany

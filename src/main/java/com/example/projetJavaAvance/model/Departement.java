@@ -12,7 +12,9 @@ public class Departement {
     private String nomDep;
     private String chefLieu;
     private String reg;
-    @OneToMany(mappedBy="depart")
+    
+    
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="depart")
     private List<Lieu> lieux;
     // Required by JPA
     private Departement() {}

@@ -2,6 +2,7 @@ package com.example.projetJavaAvance.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.projetJavaAvance.model.Monument;
@@ -11,6 +12,11 @@ import com.example.projetJavaAvance.repository.MonumentRepository;
 public class MonumentServiceImpl implements MonumentService {
 	
 	private MonumentRepository monumentRepository;
+	
+	public MonumentServiceImpl(MonumentRepository monumentRepository) {
+		super();
+		this.monumentRepository = monumentRepository;
+	}
 
 	@Override
 	public Monument saveMonument(Monument monument) {
