@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.projetJavaAvance.model.Monument;
+import com.example.projetJavaAvance.repository.MonumentRepository;
 import com.example.projetJavaAvance.service.MonumentService;
 import com.example.projetJavaAvance.service.MonumentServiceImpl;
 
@@ -20,10 +21,14 @@ public class MonumentController {
 	
 	private MonumentService monumentService;
 	
+	private MonumentRepository monumentRepository;
+	
 	// Read operation
 	@GetMapping("/monuments")
 	public List<Monument> fetchMonumentList() {
-		return monumentService.fetchMonumentList();
+		System.out.println("***in controller***");
+		return monumentRepository.findAll();
+//		return monumentService.fetchMonumentList();
 	}
 
 }

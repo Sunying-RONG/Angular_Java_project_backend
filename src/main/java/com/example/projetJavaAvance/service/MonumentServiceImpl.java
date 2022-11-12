@@ -25,7 +25,8 @@ public class MonumentServiceImpl implements MonumentService {
 
 	@Override
 	public List<Monument> fetchMonumentList() {
-		return (List<Monument>) monumentRepository.findAll();
+		System.out.println("***in service impl***");
+		return monumentRepository.findAll();
 	}
 
 	@Override
