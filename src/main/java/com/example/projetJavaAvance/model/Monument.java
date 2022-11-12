@@ -20,7 +20,7 @@ public class Monument {
 
     
     @ManyToOne
-    @JoinColumn(name="lieu_id", referencedColumnName="lieu_id") // name codeInsee of monument, refer to referencedColumnName codeInsee of lieu
+    @JoinColumn(name="lieu_id", referencedColumnName="lieu_id") // first lieu_id est de Monument, second lieu_id est de Lieu ?
     private Lieu lieu;
     
     @ManyToMany(targetEntity = Celebrite.class)
