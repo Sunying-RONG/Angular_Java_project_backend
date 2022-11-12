@@ -1,17 +1,15 @@
 package com.example.projetJavaAvance.model;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
- 
+
 @Entity
-@Table(name = "monument")
 public class Monument {
     // Required by JPA
 	@Id
-    private String      geohash;
+    private String      monument_id;
     @Column
     private String      nom;
     private String      proprietaire;
@@ -19,42 +17,39 @@ public class Monument {
     private float      longitude;
     private float      latitude;
 //    private String   	codeInsee; // foreign key
-//  table monument contient une colonne qui est une clé étrangère contenant la clé d’une lieu, lieu_id
+
+    
     @ManyToOne
-    @JoinColumn(name="codeInsee")
+    @JoinColumn(name="lieu_id", referencedColumnName="lieu_id") // name codeInsee of monument, refer to referencedColumnName codeInsee of lieu
     private Lieu lieu;
     
-    @ManyToMany
+    @ManyToMany(targetEntity = Celebrite.class)
     @JoinTable(name="AssocieA",
-    		joinColumns=@JoinColumn(name="codeM"),
-    		inverseJoinColumns=@JoinColumn(name="numCelebrite"))
-    private List<Celebrite> celebrites;
+    		joinColumns=@JoinColumn(name="monument_id", referencedColumnName = "monument_id"),
+    		inverseJoinColumns=@JoinColumn(name="celebrite_id", referencedColumnName = "celebrite_id"))
+    private Set<Celebrite> celebrites;
     
     public Monument() {}
- 
-    public Monument(String geohash, String nom, String proprietaire, String typeM, float longitude, float latitude, String codeInsee) {
-    	this.geohash = geohash;
-    	this.nom = nom;
-    	this.proprietaire = proprietaire;
-    	this.typeM = typeM;
-    	this.longitude = longitude;
-    	this.latitude = latitude;
-//    	this.codeInsee = codeInsee;
-    }
-    public List<Celebrite> getCelebrites() {
-    	return celebrites;
-    }
-    
-    public Lieu getLieu() {
-    	return lieu;
-    }
 
-	public String getGeohash() {
-		return geohash;
+	public Monument(String monument_id, String nom, String proprietaire, String typeM, float longitude, float latitude,
+			Lieu lieu, Set<Celebrite> celebrites) {
+		super();
+		this.monument_id = monument_id;
+		this.nom = nom;
+		this.proprietaire = proprietaire;
+		this.typeM = typeM;
+		this.longitude = longitude;
+		this.latitude = latitude;
+		this.lieu = lieu;
+		this.celebrites = celebrites;
 	}
 
-	public void setGeohash(String geohash) {
-		this.geohash = geohash;
+	public String getMonument_id() {
+		return monument_id;
+	}
+
+	public void setMonument_id(String monument_id) {
+		this.monument_id = monument_id;
 	}
 
 	public String getNom() {
@@ -97,23 +92,29 @@ public class Monument {
 		this.latitude = latitude;
 	}
 
-//	public String getCodeInsee() {
-//		return codeInsee;
-//	}
-//
-//	public void setCodeInsee(String codeInsee) {
-//		this.codeInsee = codeInsee;
-//	}
+	public Lieu getLieu() {
+		return lieu;
+	}
+
+	public void setLieu(Lieu lieu) {
+		this.lieu = lieu;
+	}
+
+	public Set<Celebrite> getCelebrites() {
+		return celebrites;
+	}
+
+	public void setCelebrites(Set<Celebrite> celebrites) {
+		this.celebrites = celebrites;
+	}
 
 	@Override
 	public String toString() {
-		return "Monument [geohash=" + geohash + ", nom=" + nom + ", proprietaire=" + proprietaire + ", typeM=" + typeM
-				+ ", longitude=" + longitude + ", latitude=" + latitude + ", codeInsee= ]";
+		return "Monument [monument_id=" + monument_id + ", nom=" + nom + ", proprietaire=" + proprietaire + ", typeM="
+				+ typeM + ", longitude=" + longitude + ", latitude=" + latitude + ", lieu=" + lieu + ", celebrites="
+				+ celebrites + "]";
 	}
  
-   
- 
-  
  
 }
 

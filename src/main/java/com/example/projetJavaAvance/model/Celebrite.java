@@ -1,8 +1,6 @@
 package com.example.projetJavaAvance.model;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -12,38 +10,36 @@ import javax.persistence.*;
 public class Celebrite {
 	@Column
 	@Id
-    private int    numCelebrite;
+    private int    celebrite_id;
     private String nom;
     private String prenom;
     private String nationalite;
     private String epoque;
-//    @ManyToMany
-//    @JoinTable(name = "celebrite_monument",
-//    		joinColumns = @JoinColumn(name = "numCelebrite"),
-//    		inverseJoinColumns = @JoinColumn(name = "geohash"))
-//    private Set<Monument> monuments = new HashSet<Monument>();
+    
+    
+    @ManyToMany(mappedBy="celebrites")
+    private Set<Monument> monuments;
     
     // Required by JPA
     private Celebrite() {}
- 
-    public Celebrite(int numCelebrite, String nom, String prenom, String nationalite, String epoque) {
-    	this.numCelebrite = numCelebrite;
-    	this.nom = nom;
-    	this.prenom = prenom;
-    	this.nationalite = nationalite;
-    	this.epoque = epoque;
-    }
-    
-//    public Set<Monument> getMonuments() {
-//    	return monuments;
-//    }
 
-	public int getNumCelebrite() {
-		return numCelebrite;
+	public Celebrite(int celebrite_id, String nom, String prenom, String nationalite, String epoque,
+			Set<Monument> monuments) {
+		super();
+		this.celebrite_id = celebrite_id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.nationalite = nationalite;
+		this.epoque = epoque;
+		this.monuments = monuments;
 	}
 
-	public void setNumCelebrite(int numCelebrite) {
-		this.numCelebrite = numCelebrite;
+	public int getCelebrite_id() {
+		return celebrite_id;
+	}
+
+	public void setCelebrite_id(int celebrite_id) {
+		this.celebrite_id = celebrite_id;
 	}
 
 	public String getNom() {
@@ -78,10 +74,19 @@ public class Celebrite {
 		this.epoque = epoque;
 	}
 
+	public Set<Monument> getMonuments() {
+		return monuments;
+	}
+
+	public void setMonuments(Set<Monument> monuments) {
+		this.monuments = monuments;
+	}
+
 	@Override
 	public String toString() {
-		return "Celebrite [numCelebrite=" + numCelebrite + ", nom=" + nom + ", prenom=" + prenom + ", nationalite="
-				+ nationalite + ", epoque=" + epoque + "]";
+		return "Celebrite [celebrite_id=" + celebrite_id + ", nom=" + nom + ", prenom=" + prenom + ", nationalite="
+				+ nationalite + ", epoque=" + epoque + ", monuments=" + monuments + "]";
 	}
+ 
  
 }
