@@ -6,10 +6,15 @@ import java.util.Set;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
+@JsonIdentityInfo(
+		generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "monument_id")
 public class Monument {
     // Required by JPA
 	@Id
@@ -25,14 +30,14 @@ public class Monument {
     
     @ManyToOne
     @JoinColumn(name="lieu_id", referencedColumnName="lieu_id") // first lieu_id est de Monument, second lieu_id est de Lieu ?
-    @JsonIgnore
+//    @JsonBackReference
     private Lieu lieu;
     
     @ManyToMany(targetEntity = Celebrite.class)
     @JoinTable(name="AssocieA",
     		joinColumns=@JoinColumn(name="monument_id", referencedColumnName = "monument_id"),
     		inverseJoinColumns=@JoinColumn(name="celebrite_id", referencedColumnName = "celebrite_id"))
-    @JsonIgnore
+//    @JsonIgnore
     private Set<Celebrite> celebrites;
     
     public Monument() {}

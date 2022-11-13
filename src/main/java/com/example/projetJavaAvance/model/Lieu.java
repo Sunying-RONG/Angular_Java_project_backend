@@ -4,9 +4,14 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  
 @Entity
+@JsonIdentityInfo(
+    	generator = ObjectIdGenerators.PropertyGenerator.class,
+    	property = "lieu_id")
 public class Lieu {
     @Id
     private String lieu_id;
@@ -21,6 +26,7 @@ public class Lieu {
     @OneToOne(mappedBy="chefLieuObj")
     private Departement departement;
     @OneToMany(mappedBy="lieu")
+//    @JsonManagedReference
     private List<Monument> monuments = new ArrayList<>();
     
     // Required by JPA
@@ -37,11 +43,11 @@ public class Lieu {
 		this.monuments = monuments;
 	}
 
-	public String getCodeInsee() {
+	public String getLieu_id() {
 		return lieu_id;
 	}
 
-	public void setCodeInsee(String lieu_id) {
+	public void setLieu_id(String lieu_id) {
 		this.lieu_id = lieu_id;
 	}
 
