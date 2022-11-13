@@ -11,6 +11,7 @@ import com.example.projetJavaAvance.repository.MonumentRepository;
 @Service
 public class MonumentServiceImpl implements MonumentService {
 	
+	@Autowired
 	private MonumentRepository monumentRepository;
 	
 	public MonumentServiceImpl(MonumentRepository monumentRepository) {

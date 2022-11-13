@@ -5,6 +5,10 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Monument {
     // Required by JPA
@@ -21,12 +25,14 @@ public class Monument {
     
     @ManyToOne
     @JoinColumn(name="lieu_id", referencedColumnName="lieu_id") // first lieu_id est de Monument, second lieu_id est de Lieu ?
+    @JsonIgnore
     private Lieu lieu;
     
     @ManyToMany(targetEntity = Celebrite.class)
     @JoinTable(name="AssocieA",
     		joinColumns=@JoinColumn(name="monument_id", referencedColumnName = "monument_id"),
     		inverseJoinColumns=@JoinColumn(name="celebrite_id", referencedColumnName = "celebrite_id"))
+    @JsonIgnore
     private Set<Celebrite> celebrites;
     
     public Monument() {}

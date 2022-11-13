@@ -19,16 +19,14 @@ import com.example.projetJavaAvance.service.MonumentServiceImpl;
 //Angular frontend to http://localhost:4200, and our Boot backend to http://localhost:8080
 public class MonumentController {
 	
+	@Autowired
 	private MonumentService monumentService;
-	
-	private MonumentRepository monumentRepository;
 	
 	// Read operation
 	@GetMapping("/monuments")
 	public List<Monument> fetchMonumentList() {
 		System.out.println("***in controller***");
-		return monumentRepository.findAll();
-//		return monumentService.fetchMonumentList();
+		return monumentService.fetchMonumentList();
 	}
 
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.example.projetJavaAvance.model.Monument;
 
-public interface MonumentService {
+public abstract interface MonumentService {
 	// save operation
 	Monument saveMonument(Monument monument);
 	// read operation
