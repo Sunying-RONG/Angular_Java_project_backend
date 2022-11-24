@@ -106,7 +106,8 @@ insert into Celebrite values (9,'De Villeneuve','Arnaud','Francaise','XIII');
 insert into Celebrite values (10,'De Nostredame','Michel','Francaise','XVI');
 
 -- AssocieA
-create table AssocieA(monument_id varchar(12), celebrite_id integer, constraint AssocieA_pk primary key (monument_id,celebrite_id));
+create table AssocieA(monument_id varchar(12), celebrite_id integer, 
+            constraint AssocieA_pk primary key (monument_id,celebrite_id));
 
 insert into AssocieA values ('spdrjzvhx3eu',2);
 insert into AssocieA values ('spdrjzvhx3eu',3);

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -21,12 +22,14 @@ public class Lieu {
     private float latitude;
 
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "departement_id", referencedColumnName="departement_id") 
     @OneToOne(mappedBy="chefLieuObj")
+    @JsonManagedReference
     private Departement departement;
+    
     @OneToMany(mappedBy="lieu")
-//    @JsonManagedReference
+    @JsonBackReference
     private List<Monument> monuments = new ArrayList<>();
     
     // Required by JPA

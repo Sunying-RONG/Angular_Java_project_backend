@@ -7,8 +7,12 @@ import java.util.Set;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
  
 @Entity
 @JsonIdentityInfo(
@@ -23,8 +27,11 @@ public class Celebrite {
     private String nationalite;
     private String epoque;
     
+//    FilterProvider filters = new SimpleFilterProvider().addFilter(
+//            "celebriteIdFilter", SimpleBeanPropertyFilter.filterOutAllExcept("celebrite_id"));
     
     @ManyToMany(mappedBy="celebrites")
+    @JsonIgnore
     private Set<Monument> monuments;
     
     // Required by JPA

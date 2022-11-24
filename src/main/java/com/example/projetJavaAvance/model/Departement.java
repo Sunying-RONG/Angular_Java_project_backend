@@ -3,9 +3,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  
 @Entity
 @Table(name="Departement")
+@JsonIdentityInfo(
+		generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "departement_id")
 public class Departement {
     @Id
     private String departement_id;
@@ -15,8 +22,10 @@ public class Departement {
     private String reg;
     
     
-    @OneToMany(cascade=CascadeType.ALL, mappedBy="departement")
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="departement")
+    @JsonBackReference
     private List<Lieu> lieux = new ArrayList<>();
+    
     @OneToOne
     @JoinColumn(name="lieu_id", referencedColumnName="lieu_id")
     private Lieu chefLieuObj;
