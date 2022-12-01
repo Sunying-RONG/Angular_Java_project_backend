@@ -14,27 +14,33 @@ import com.example.projetJavaAvance.model.Monument;
 import com.example.projetJavaAvance.repository.CelebriteRepository;
 import com.example.projetJavaAvance.repository.DepartementRepository;
 import com.example.projetJavaAvance.repository.LieuRepository;
+import com.example.projetJavaAvance.repository.MonumentRepository;
 
 @Service
 public class CelebriteServiceImpl implements CelebriteService {
 	
 	@Autowired
 	private CelebriteRepository celebriteRepository;
+	@Autowired
+	private MonumentRepository monumentRepository;
 	
-	public CelebriteServiceImpl(CelebriteRepository celebriteRepository) {
-		super();
-		this.celebriteRepository = celebriteRepository;
-	}
+//	public CelebriteServiceImpl(CelebriteRepository celebriteRepository) {
+//		super();
+//		this.celebriteRepository = celebriteRepository;
+//	}
 
 	@Override
-	public Set<Monument> getMonumentListByCelebriteId(int celebrite_id) {
-		Optional<Celebrite> celebriteOp = celebriteRepository.findById(celebrite_id);
-		if (celebriteOp.isPresent()) {
-			return celebriteOp.get().getMonuments();
+	public Set<Celebrite> getCelebriteListByMomumentId(String monument_id) {
+		Optional<Monument> monumentOp = monumentRepository.findById(monument_id);
+		if (monumentOp.isPresent()) {
+			return monumentOp.get().getCelebrites();
 		} else {
-			System.out.println("Celebrite n'existe pas!");
+			System.out.println("Monument n'existe pas!");
 			return null;
 		}
 	}
+
+
+	
 
 }

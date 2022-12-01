@@ -1,11 +1,15 @@
 package com.example.projetJavaAvance.service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.projetJavaAvance.model.Celebrite;
 import com.example.projetJavaAvance.model.Monument;
+import com.example.projetJavaAvance.repository.CelebriteRepository;
 import com.example.projetJavaAvance.repository.MonumentRepository;
 
 @Service
@@ -13,11 +17,13 @@ public class MonumentServiceImpl implements MonumentService {
 	
 	@Autowired
 	private MonumentRepository monumentRepository;
+	@Autowired
+	private CelebriteRepository celebriteRepository;
 	
-	public MonumentServiceImpl(MonumentRepository monumentRepository) {
-		super();
-		this.monumentRepository = monumentRepository;
-	}
+//	public MonumentServiceImpl(MonumentRepository monumentRepository) {
+//		super();
+//		this.monumentRepository = monumentRepository;
+//	}
 
 	@Override
 	public Monument saveMonument(Monument monument) {
@@ -38,6 +44,18 @@ public class MonumentServiceImpl implements MonumentService {
 	@Override
 	public void deleteMonumentById(String geohash) {
 		monumentRepository.deleteById(geohash);
+	}
+	
+	
+	@Override
+	public Set<Monument> getMonumentListByCelebriteId(int celebrite_id) {
+		Optional<Celebrite> celebriteOp = celebriteRepository.findById(celebrite_id);
+		if (celebriteOp.isPresent()) {
+			return celebriteOp.get().getMonuments();
+		} else {
+			System.out.println("Celebrite n'existe pas!");
+			return null;
+		}
 	}
 
 }

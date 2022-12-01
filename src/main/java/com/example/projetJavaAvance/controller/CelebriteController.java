@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.projetJavaAvance.model.Celebrite;
 import com.example.projetJavaAvance.model.Monument;
 import com.example.projetJavaAvance.service.CelebriteService;
-import com.example.projetJavaAvance.service.DepartementService;
+import com.example.projetJavaAvance.service.MonumentService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -22,10 +23,9 @@ public class CelebriteController {
 	@Autowired
 	private CelebriteService celebriteService;
 	
-	@GetMapping("/monumentOfCelebrite")
-	public Set<Monument> getMonumentListByCelebriteId(@RequestParam int id) {
-		System.out.println("celebrite id : "+id);
-		return celebriteService.getMonumentListByCelebriteId(id);
+	@GetMapping("/celebriteListOfMonument")
+	public Set<Celebrite> getCelebriteListByMonumentId(@RequestParam String id) {
+		return celebriteService.getCelebriteListByMomumentId(id);
 	}
 
 }
