@@ -32,4 +32,9 @@ public class LieuServiceImpl implements LieuService {
 		}
 	}
 
+	@Override
+	public List<Lieu> fetchLieuList() {
+		return lieuRepository.findAll();
+	}
+
 }

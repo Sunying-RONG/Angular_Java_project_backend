@@ -17,7 +17,7 @@ public class Departement {
     @Id
     private String departement_id;
     @Column
-    private String nomDep;
+    private String nom_dep;
 //    private String chefLieu;
     private String reg;
     
@@ -33,10 +33,10 @@ public class Departement {
     // Required by JPA
     public Departement() {}
 
-	public Departement(String departement_id, String nomDep, String reg, List<Lieu> lieux, Lieu chefLieuObj) {
+	public Departement(String departement_id, String nom_dep, String reg, List<Lieu> lieux, Lieu chefLieuObj) {
 		super();
 		this.departement_id = departement_id;
-		this.nomDep = nomDep;
+		this.nom_dep = nom_dep;
 		this.reg = reg;
 		this.lieux = lieux;
 		this.chefLieuObj = chefLieuObj;
@@ -50,12 +50,12 @@ public class Departement {
 		this.departement_id = departement_id;
 	}
 
-	public String getNomDep() {
-		return nomDep;
+	public String getNom_dep() {
+		return nom_dep;
 	}
 
-	public void setNomDep(String nomDep) {
-		this.nomDep = nomDep;
+	public void setNom_Dep(String nom_dep) {
+		this.nom_dep = nom_dep;
 	}
 
 	public String getReg() {
@@ -84,7 +84,7 @@ public class Departement {
 
 	@Override
 	public String toString() {
-		return "Departement [departement_id=" + departement_id + ", nomDep=" + nomDep + ", reg=" + reg + ", lieux="
+		return "Departement [departement_id=" + departement_id + ", nom_dep=" + nom_dep + ", reg=" + reg + ", lieux="
 				+ lieux + ", chefLieuObj=" + chefLieuObj + "]";
 	}
  

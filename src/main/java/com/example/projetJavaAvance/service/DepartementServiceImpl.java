@@ -34,4 +34,9 @@ public class DepartementServiceImpl implements DepartementService {
 		}
 	}
 
+	@Override
+	public List<Departement> fetchDepartementList() {
+		return departementRepository.findAll();
+	}
+
 }

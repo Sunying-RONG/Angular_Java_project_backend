@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.projetJavaAvance.model.Departement;
 import com.example.projetJavaAvance.model.Lieu;
 import com.example.projetJavaAvance.service.DepartementService;
 
@@ -20,7 +21,12 @@ public class DepartementController {
 	@Autowired
 	private DepartementService departementService;
 	
-	// Read operation
+	@GetMapping("/departements")
+	public List<Departement> fetchLieuList() {
+		System.out.println("fetchDepartementList");
+		return departementService.fetchDepartementList();
+	}
+	
 	@GetMapping("/lieuOfDepartement")
 	public List<Lieu> getLieuListByDepartementId(@RequestParam String id) {
 		System.out.println("departement id : "+id);

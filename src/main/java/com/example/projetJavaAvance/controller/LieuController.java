@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.projetJavaAvance.model.Lieu;
 import com.example.projetJavaAvance.model.Monument;
 import com.example.projetJavaAvance.service.LieuService;
 
@@ -21,7 +22,12 @@ public class LieuController {
 	@Autowired
 	private LieuService lieuService;
 	
-	// Read operation
+	@GetMapping("/lieux")
+	public List<Lieu> fetchLieuList() {
+		System.out.println("fetchLieuList");
+		return lieuService.fetchLieuList();
+	}
+	
 	@GetMapping("/monumentsOfLieu") // http://localhost:8080/monumentsOfLieu?id=34199
 	public List<Monument> getMonumentListByLieuId(@RequestParam String id) {
 		System.out.println("lieu id : "+id);

@@ -26,7 +26,7 @@ insert into  lieu values ('30189','NIMES',4.360054,43.836699,'30');
 
 
 -- table Departement
-create table Departement(departement_id varchar(4) primary key, nomDep varchar(30), lieu_id varchar(5), reg varchar(4));
+create table Departement(departement_id varchar(4) primary key, nom_dep varchar(30), lieu_id varchar(5), reg varchar(4));
 
 insert into Departement values('34', 'HERAULT', '34172', '76');
 insert into Departement values('30', 'GARD', '30189', '76');
