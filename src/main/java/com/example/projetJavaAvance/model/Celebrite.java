@@ -35,7 +35,7 @@ public class Celebrite {
     private Set<Monument> monuments;
     
     // Required by JPA
-    private Celebrite() {}
+    public Celebrite() {}
 
 	public Celebrite(int celebrite_id, String nom, String prenom, String nationalite, String epoque,
 			Set<Monument> monuments) {

@@ -22,7 +22,7 @@ public class Lieu {
     private float latitude;
 
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "departement_id", referencedColumnName="departement_id") 
     @OneToOne(mappedBy="chefLieuObj")
     @JsonManagedReference
@@ -33,7 +33,7 @@ public class Lieu {
     private List<Monument> monuments = new ArrayList<>();
     
     // Required by JPA
-    private Lieu() {}
+    public Lieu() {}
 
 	public Lieu(String lieu_id, String nom, float longitude, float latitude, Departement departement,
 			List<Monument> monuments) {

@@ -22,7 +22,7 @@ public class Departement {
     private String reg;
     
     
-    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="departement")
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="departement")
     @JsonBackReference
     private List<Lieu> lieux = new ArrayList<>();
     
@@ -31,7 +31,7 @@ public class Departement {
     private Lieu chefLieuObj;
     
     // Required by JPA
-    private Departement() {}
+    public Departement() {}
 
 	public Departement(String departement_id, String nomDep, String reg, List<Lieu> lieux, Lieu chefLieuObj) {
 		super();
