@@ -39,4 +39,9 @@ public class DepartementServiceImpl implements DepartementService {
 		return departementRepository.findAll();
 	}
 
+	@Override
+	public Lieu getChefLieu(String departement_id) {
+		return departementRepository.findById(departement_id).get().getChefLieuObj();
+	}
+
 }

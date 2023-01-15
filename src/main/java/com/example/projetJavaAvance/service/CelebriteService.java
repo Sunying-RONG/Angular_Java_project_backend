@@ -8,6 +8,7 @@ import com.example.projetJavaAvance.model.Monument;
 
 public abstract interface CelebriteService {
 	
+	List<Celebrite> fetchCelebriteList();
 	
 	Set<Celebrite> getCelebriteListByMomumentId(String monument_id);
 

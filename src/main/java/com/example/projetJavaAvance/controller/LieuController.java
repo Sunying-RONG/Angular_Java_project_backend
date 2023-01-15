@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,21 +17,20 @@ import com.example.projetJavaAvance.service.LieuService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("api/")
 //Angular frontend to http://localhost:4200, and our Boot backend to http://localhost:8080
 public class LieuController {
 	
 	@Autowired
 	private LieuService lieuService;
 	
-	@GetMapping("/lieux")
+	@GetMapping("lieux")
 	public List<Lieu> fetchLieuList() {
-		System.out.println("fetchLieuList");
 		return lieuService.fetchLieuList();
 	}
 	
-	@GetMapping("/monumentsOfLieu") // http://localhost:8080/monumentsOfLieu?id=34199
+	@GetMapping("monumentsOfLieu") // http://localhost:8080/monumentsOfLieu?id=34199
 	public List<Monument> getMonumentListByLieuId(@RequestParam String id) {
-		System.out.println("lieu id : "+id);
 		return lieuService.getMonumentListByLieuId(id);
 	}
 

@@ -40,6 +40,11 @@ public class CelebriteServiceImpl implements CelebriteService {
 		}
 	}
 
+	@Override
+	public List<Celebrite> fetchCelebriteList() {
+		return celebriteRepository.findAll();
+	}
+
 
 	
 
