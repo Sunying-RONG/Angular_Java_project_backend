@@ -28,6 +28,11 @@ public class MonumentController {
 		return monumentService.fetchMonumentList();
 	}
 	
+	@GetMapping("monumentById")
+	public Monument getMonumentById(String id) {
+		return monumentService.getMonumnetById(id);
+	}
+	
 	@GetMapping("monumentListOfCelebrite")
 	public Set<Monument> getMonumentListByCelebriteId(@RequestParam int id) {
 		return monumentService.getMonumentListByCelebriteId(id);

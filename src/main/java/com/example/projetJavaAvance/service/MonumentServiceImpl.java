@@ -58,4 +58,9 @@ public class MonumentServiceImpl implements MonumentService {
 		}
 	}
 
+	@Override
+	public Monument getMonumnetById(String monument_id) {
+		return monumentRepository.findById(monument_id).get();
+	}
+
 }
