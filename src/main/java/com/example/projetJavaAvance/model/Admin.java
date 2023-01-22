@@ -15,7 +15,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 		property = "admin_id")
 public class Admin {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
     private int      admin_id;
     @Column
     private String      username;

@@ -10,8 +10,8 @@ public abstract interface MonumentService {
 	Monument saveMonument(Monument monument, String lieu_id);
 	List<Monument> fetchMonumentList();
 	Monument getMonumnetById(String monument_id);
-	Monument updateMonument(Monument monument, String geohash);
-	void deleteMonumentById(String geohash);
+	Monument updateMonument(Monument monument);
+	void deleteMonumentById(String monument_id);
 	Set<Monument> getMonumentListByCelebriteId(int celebrite_id);
-
+	Monument addCelebrite(Celebrite[] celebrites, String monument_id);
 }

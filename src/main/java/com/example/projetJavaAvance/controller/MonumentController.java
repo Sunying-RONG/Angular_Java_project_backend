@@ -7,6 +7,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -64,32 +65,23 @@ public class MonumentController {
 	@PostMapping("createMonument/{lieu_id}")
 	public Monument createMonument(@RequestBody Monument monument,
 									@PathVariable String lieu_id) {
-//		Monument newMonument = new Monument();
-		System.out.print("monument: "+monument);
-//		
-//		String lieu_id = monumentMap.get("lieu_id").toString();
-//		System.out.print("lieu id: "+lieu_id);
-//		Lieu lieu = lieuService.getLieuById(lieu_id);
-//		
-//		Celebrite[] celebrites = (Celebrite[]) monumentMap.get("celebrite");
-//		
-//		String monument_id = monumentMap.get("monument_id").toString();
-//		String nom = monumentMap.get("nom").toString();
-//		String proprietaire = monumentMap.get("proprietaire").toString();
-//		String typeM = monumentMap.get("typeM").toString();
-//		float longitude = (float) monumentMap.get("longitude");
-//		float latitude = (float) monumentMap.get("latitude");
-//		newMonument.setMonument_id(monument_id);
-//		newMonument.setNom(nom);
-//		newMonument.setProprietaire(proprietaire);
-//		newMonument.setTypeM(typeM);
-//		newMonument.setLongitude(longitude);
-//		newMonument.setLatitude(latitude);
-//		newMonument.setLieu(lieu);
-//		
-//		System.out.println(monument_id);
-//		System.out.println(lieu_id);
+//		System.out.print("monument: "+monument);
 		return this.monumentService.saveMonument(monument, lieu_id);
+	}
+	
+	@PostMapping("addCelebrite/{monument_id}")
+	public Monument addCelebrite(@RequestBody Celebrite[] celebrites, 
+								@PathVariable String monument_id) {
+//		for (Celebrite c : celebrites) {
+//			System.out.print("Celebrite: "+c);
+//		}
+		
+		return this.monumentService.addCelebrite(celebrites, monument_id);
+	}
+	
+	@DeleteMapping("deleteMonument/{monument_id}")
+	public void deleteMonument(@PathVariable String monument_id) {
+		this.monumentService.deleteMonumentById(monument_id);
 	}
 
 }

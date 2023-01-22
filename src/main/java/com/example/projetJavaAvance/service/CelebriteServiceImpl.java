@@ -1,5 +1,6 @@
 package com.example.projetJavaAvance.service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -23,11 +24,6 @@ public class CelebriteServiceImpl implements CelebriteService {
 	private CelebriteRepository celebriteRepository;
 	@Autowired
 	private MonumentRepository monumentRepository;
-	
-//	public CelebriteServiceImpl(CelebriteRepository celebriteRepository) {
-//		super();
-//		this.celebriteRepository = celebriteRepository;
-//	}
 
 	@Override
 	public Set<Celebrite> getCelebriteListByMomumentId(String monument_id) {
@@ -43,6 +39,26 @@ public class CelebriteServiceImpl implements CelebriteService {
 	@Override
 	public List<Celebrite> fetchCelebriteList() {
 		return celebriteRepository.findAll();
+	}
+
+	@Override
+	public Celebrite createCelebrite(Celebrite celebrite) {
+		return celebriteRepository.save(celebrite);
+	}
+	
+	@Override
+	public void deleteCelebrite(int celebrite_id) {
+		celebriteRepository.deleteById(celebrite_id);
+	}
+
+	@Override
+	public Celebrite updateCelebrite(Celebrite celebrite) {
+		return celebriteRepository.save(celebrite);
+	}
+
+	@Override
+	public Celebrite getCelebriteById(int celebrite_id) {
+		return celebriteRepository.findById(celebrite_id).get();
 	}
 
 

@@ -1,5 +1,8 @@
 package com.example.projetJavaAvance.service;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -23,33 +26,42 @@ public class MonumentServiceImpl implements MonumentService {
 	private CelebriteRepository celebriteRepository;
 	@Autowired
 	private LieuRepository lieuRepository;
-	
-//	public MonumentServiceImpl(MonumentRepository monumentRepository) {
-//		super();
-//		this.monumentRepository = monumentRepository;
-//	}
+	@Autowired
+	private CelebriteService celebriteService;
 
 	@Override
 	public Monument saveMonument(Monument monument, String lieu_id) {
 		Lieu lieu = lieuRepository.findById(lieu_id).get();
+		// monument set lieu
 		monument.setLieu(lieu);
-		return monumentRepository.save(monument);
+		Monument monumentSave = monumentRepository.save(monument);
+		
+		return monumentSave;
 	}
-
+	
+	@Override
+	public Monument addCelebrite(Celebrite[] celebrites, String monument_id) {
+		Set<Celebrite> celebriteSet = new HashSet<Celebrite>(Arrays.asList(celebrites));
+		Monument m = monumentRepository.findById(monument_id).get();
+//		System.out.println("in addCelebrite: "+m);
+		m.setCelebrites(celebriteSet);
+		return monumentRepository.save(m);
+	}
+	
 	@Override
 	public List<Monument> fetchMonumentList() {
 		return monumentRepository.findAll();
 	}
 
 	@Override
-	public Monument updateMonument(Monument monument, String geohash) {
+	public Monument updateMonument(Monument monument) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void deleteMonumentById(String geohash) {
-		monumentRepository.deleteById(geohash);
+	public void deleteMonumentById(String monument_id) {
+		monumentRepository.deleteById(monument_id);
 	}
 	
 	

@@ -21,16 +21,13 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 public class Celebrite {
 	@Column
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@GeneratedValue(strategy = GenerationType.AUTO)
     private int    celebrite_id;
     private String nom;
     private String prenom;
     private String nationalite;
     private String epoque;
-    
-//    FilterProvider filters = new SimpleFilterProvider().addFilter(
-//            "celebriteIdFilter", SimpleBeanPropertyFilter.filterOutAllExcept("celebrite_id"));
-    
+
     @ManyToMany(mappedBy="celebrites")
     @JsonIgnore
     private Set<Monument> monuments;
