@@ -37,4 +37,9 @@ public class LieuServiceImpl implements LieuService {
 		return lieuRepository.findAll();
 	}
 
+	@Override
+	public Lieu getLieuById(String lieu_id) {
+		return lieuRepository.findById(lieu_id).get();
+	}
+
 }

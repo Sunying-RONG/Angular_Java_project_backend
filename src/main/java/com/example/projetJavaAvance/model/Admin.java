@@ -2,6 +2,8 @@ package com.example.projetJavaAvance.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -13,7 +15,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 		property = "admin_id")
 public class Admin {
 	@Id
-    private String      admin_id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+    private int      admin_id;
     @Column
     private String      username;
     private String      password;
@@ -23,18 +26,18 @@ public class Admin {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Admin(String admin_id, String username, String password) {
+	public Admin(int admin_id, String username, String password) {
 		super();
 		this.admin_id = admin_id;
 		this.username = username;
 		this.password = password;
 	}
 
-	public String getAdmin_id() {
+	public int getAdmin_id() {
 		return admin_id;
 	}
 
-	public void setAdmin_id(String admin_id) {
+	public void setAdmin_id(int admin_id) {
 		this.admin_id = admin_id;
 	}
 

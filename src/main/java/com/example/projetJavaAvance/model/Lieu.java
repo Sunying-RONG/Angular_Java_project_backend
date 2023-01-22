@@ -25,10 +25,10 @@ public class Lieu {
     @ManyToOne
     @JoinColumn(name = "departement_id", referencedColumnName="departement_id") 
     @OneToOne(mappedBy="chefLieuObj")
-    @JsonManagedReference
+//    @JsonManagedReference
     private Departement departement;
     
-    @OneToMany(mappedBy="lieu")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="lieu")
     @JsonBackReference
     private List<Monument> monuments = new ArrayList<>();
     

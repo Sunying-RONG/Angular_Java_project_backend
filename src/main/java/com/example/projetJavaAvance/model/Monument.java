@@ -30,7 +30,7 @@ public class Monument {
     
     @ManyToOne
     @JoinColumn(name="lieu_id", referencedColumnName="lieu_id") // first lieu_id est de Monument, second lieu_id est de Lieu ?
-    @JsonManagedReference
+    @JsonBackReference 
     private Lieu lieu;
     
     @ManyToMany(targetEntity = Celebrite.class)

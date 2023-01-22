@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 public class Celebrite {
 	@Column
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
     private int    celebrite_id;
     private String nom;
     private String prenom;

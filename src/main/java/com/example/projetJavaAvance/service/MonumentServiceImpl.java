@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.projetJavaAvance.model.Celebrite;
+import com.example.projetJavaAvance.model.Lieu;
 import com.example.projetJavaAvance.model.Monument;
 import com.example.projetJavaAvance.repository.CelebriteRepository;
+import com.example.projetJavaAvance.repository.LieuRepository;
 import com.example.projetJavaAvance.repository.MonumentRepository;
 
 @Service
@@ -19,6 +21,8 @@ public class MonumentServiceImpl implements MonumentService {
 	private MonumentRepository monumentRepository;
 	@Autowired
 	private CelebriteRepository celebriteRepository;
+	@Autowired
+	private LieuRepository lieuRepository;
 	
 //	public MonumentServiceImpl(MonumentRepository monumentRepository) {
 //		super();
@@ -26,7 +30,9 @@ public class MonumentServiceImpl implements MonumentService {
 //	}
 
 	@Override
-	public Monument saveMonument(Monument monument) {
+	public Monument saveMonument(Monument monument, String lieu_id) {
+		Lieu lieu = lieuRepository.findById(lieu_id).get();
+		monument.setLieu(lieu);
 		return monumentRepository.save(monument);
 	}
 

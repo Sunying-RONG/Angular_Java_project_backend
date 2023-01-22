@@ -8,4 +8,5 @@ import com.example.projetJavaAvance.model.Monument;
 public abstract interface LieuService {
 	List<Lieu> fetchLieuList();
 	List<Monument> getMonumentListByLieuId(String lieu_id);
+	Lieu getLieuById(String lieu_id);
 }

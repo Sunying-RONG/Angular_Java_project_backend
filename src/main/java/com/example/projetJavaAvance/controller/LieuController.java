@@ -33,5 +33,10 @@ public class LieuController {
 	public List<Monument> getMonumentListByLieuId(@RequestParam String id) {
 		return lieuService.getMonumentListByLieuId(id);
 	}
+	
+	@GetMapping("lieuById")
+	public Lieu getLieuById(@RequestParam String lieu_id) {
+		return lieuService.getLieuById(lieu_id);
+	}
 
 }

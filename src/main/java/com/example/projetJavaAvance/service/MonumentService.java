@@ -7,7 +7,7 @@ import com.example.projetJavaAvance.model.Celebrite;
 import com.example.projetJavaAvance.model.Monument;
 
 public abstract interface MonumentService {
-	Monument saveMonument(Monument monument);
+	Monument saveMonument(Monument monument, String lieu_id);
 	List<Monument> fetchMonumentList();
 	Monument getMonumnetById(String monument_id);
 	Monument updateMonument(Monument monument, String geohash);
