@@ -43,7 +43,6 @@ public class MonumentServiceImpl implements MonumentService {
 	public Monument addCelebrite(Celebrite[] celebrites, String monument_id) {
 		Set<Celebrite> celebriteSet = new HashSet<Celebrite>(Arrays.asList(celebrites));
 		Monument m = monumentRepository.findById(monument_id).get();
-//		System.out.println("in addCelebrite: "+m);
 		m.setCelebrites(celebriteSet);
 		return monumentRepository.save(m);
 	}

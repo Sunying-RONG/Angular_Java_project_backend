@@ -72,10 +72,6 @@ public class MonumentController {
 	@PostMapping("addCelebrite/{monument_id}")
 	public Monument addCelebrite(@RequestBody Celebrite[] celebrites, 
 								@PathVariable String monument_id) {
-//		for (Celebrite c : celebrites) {
-//			System.out.print("Celebrite: "+c);
-//		}
-		
 		return this.monumentService.addCelebrite(celebrites, monument_id);
 	}
 	
