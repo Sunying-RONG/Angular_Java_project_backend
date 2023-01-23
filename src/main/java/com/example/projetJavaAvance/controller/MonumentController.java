@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -69,7 +70,13 @@ public class MonumentController {
 		return this.monumentService.saveMonument(monument, lieu_id);
 	}
 	
-	@PostMapping("addCelebrite/{monument_id}")
+	@PutMapping("updateMonument/{lieu_id}")
+	public Monument updateMonument(@RequestBody Monument monument,
+									@PathVariable String lieu_id) {
+		return this.monumentService.updateMonument(monument, lieu_id);
+	}
+	
+	@PutMapping("addCelebrite/{monument_id}")
 	public Monument addCelebrite(@RequestBody Celebrite[] celebrites, 
 								@PathVariable String monument_id) {
 		return this.monumentService.addCelebrite(celebrites, monument_id);

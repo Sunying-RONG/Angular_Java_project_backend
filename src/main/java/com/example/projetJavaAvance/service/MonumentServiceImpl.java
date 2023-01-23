@@ -44,7 +44,7 @@ public class MonumentServiceImpl implements MonumentService {
 		Set<Celebrite> celebriteSet = new HashSet<Celebrite>(Arrays.asList(celebrites));
 		Monument m = monumentRepository.findById(monument_id).get();
 		m.setCelebrites(celebriteSet);
-		return monumentRepository.save(m);
+		return monumentRepository.save(m); // update
 	}
 	
 	@Override
@@ -53,9 +53,12 @@ public class MonumentServiceImpl implements MonumentService {
 	}
 
 	@Override
-	public Monument updateMonument(Monument monument) {
-		// TODO Auto-generated method stub
-		return null;
+	public Monument updateMonument(Monument monument, String lieu_id) {
+		Lieu lieu = lieuRepository.findById(lieu_id).get();
+		// monument set lieu
+		monument.setLieu(lieu);
+		Monument monumentSave = monumentRepository.save(monument);
+		return monumentSave;
 	}
 
 	@Override
