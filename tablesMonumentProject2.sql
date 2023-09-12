@@ -8,9 +8,7 @@ drop table if exists Departement;
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- table Lieu
-create table Lieu(lieu_id varchar(5) primary key, nom varchar(16), 
-                    longitude float, latitude float, departement_id varchar(4));
-
+create table Lieu(lieu_id varchar(5) primary key, nom varchar(16), longitude float, latitude float, departement_id varchar(4));
 insert into  lieu values ('34172','MONTPELLIER',3.876716,43.610769,'34');
 insert into  lieu values ('34198','PEROLS',3.954211,43.563782,'34');
 insert into  lieu values ('34199','PEZENAS',3.423193,43.461531,'34');
@@ -36,8 +34,7 @@ alter table Lieu add constraint Lieu_depart_fk foreign key (departement_id) refe
 alter table Departement add constraint Departement_chefLieu_fk foreign key (lieu_id) references Lieu(lieu_id) on delete cascade;
 
 -- table Monument
-create table Monument (monument_id varchar(12) primary key, nom varchar(80), proprietaire varchar(10), 
-                        typeM varchar(20), longitude float, latitude float, lieu_id varchar(5));
+create table Monument (monument_id varchar(12) primary key, nom varchar(80), proprietaire varchar(10), typeM varchar(20), longitude float, latitude float, lieu_id varchar(5));
 
 insert into Monument values ('spfb05ty554b','HOTEL DUFFAU','PRIVE','HOTEL_PARTICULIER',3.87521667,43.6140222,'34172');                                          
 insert into Monument values ('spfb070h0d5t','HOTEL DE MONTFERRIER','PRIVE','HOTEL_PARTICULIER',3.8782,43.6109278,'34172');                                                            
@@ -106,8 +103,7 @@ insert into Celebrite values (9,'De Villeneuve','Arnaud','Francaise','XIII');
 insert into Celebrite values (10,'De Nostredame','Michel','Francaise','XVI');
 
 -- AssocieA
-create table AssocieA(monument_id varchar(12), celebrite_id integer, 
-            constraint AssocieA_pk primary key (monument_id,celebrite_id));
+create table AssocieA(monument_id varchar(12), celebrite_id integer, constraint AssocieA_pk primary key (monument_id,celebrite_id));
 
 insert into AssocieA values ('spdrjzvhx3eu',2);
 insert into AssocieA values ('spdrjzvhx3eu',3);
