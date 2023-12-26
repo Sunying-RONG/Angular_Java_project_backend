@@ -32,7 +32,6 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
-        context: .
         file: ./Dockerfile
         push: true
         tags: monument-spring-backend-docker:2.0
