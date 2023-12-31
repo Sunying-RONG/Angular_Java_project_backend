@@ -14,7 +14,7 @@ import com.example.projetJavaAvance.model.Admin;
 import com.example.projetJavaAvance.service.AdminService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RequestMapping("api/")
 public class AdminController {
 	

@@ -16,7 +16,7 @@ import com.example.projetJavaAvance.model.Monument;
 import com.example.projetJavaAvance.service.LieuService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RequestMapping("api/")
 //Angular frontend to http://localhost:4200, and our Boot backend to http://localhost:8080
 public class LieuController {
