@@ -125,3 +125,5 @@ alter table Monument add constraint monumentcode foreign key (lieu_id) reference
 alter table AssocieA add constraint AssocieA_codeM_fk foreign key (monument_id) references Monument(monument_id) on delete cascade;
 alter table AssocieA add constraint AssocieA_numCelebrite_fk foreign key (celebrite_id) references Celebrite(celebrite_id) on delete cascade;
 
+create table Admin(admin_id integer primary key, username varchar(30), password varchar(30));
+insert into Admin values(1, 'admin', 'pdadmin');
