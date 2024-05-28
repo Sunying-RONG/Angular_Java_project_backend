@@ -2,7 +2,7 @@
 ## Architecture
 Ce projet utilise l'architecture de MVC (modèle, vue, contrôleur) et consisté par deux petits projets: 
 
-Ce projet de Java Spring Boot est pour les parties modèle et contrôleur. Le projet Angular est pour la partie vue.
+Ce projet de Java Spring Boot est pour les parties modèle et contrôleur. Le [projet Angular](https://github.com/Sunying-RONG/Angular_Java_project_frontend) est pour la partie vue.
 
 - La configuration de la connexion de la base de donnée est dans /projetJavaAvance/src/main/resources/application.properties  
 - Class modèle est pour les tables utilisées, mapping leurs relations par hibernate.  
