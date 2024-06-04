@@ -8,7 +8,6 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.projetJavaAvance.model.Departement;
 import com.example.projetJavaAvance.model.Lieu;
 import com.example.projetJavaAvance.model.Monument;
 import com.example.projetJavaAvance.repository.LieuRepository;

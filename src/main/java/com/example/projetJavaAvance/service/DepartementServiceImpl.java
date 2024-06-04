@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.projetJavaAvance.model.Departement;
 import com.example.projetJavaAvance.model.Lieu;
-import com.example.projetJavaAvance.model.Monument;
 import com.example.projetJavaAvance.repository.DepartementRepository;
-import com.example.projetJavaAvance.repository.LieuRepository;
 
 @Service
 public class DepartementServiceImpl implements DepartementService {
