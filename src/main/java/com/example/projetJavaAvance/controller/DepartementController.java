@@ -1,6 +1,6 @@
 package com.example.projetJavaAvance.controller;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,12 +24,12 @@ public class DepartementController {
 	private DepartementService departementService;
 	
 	@GetMapping("departements")
-	public List<Departement> fetchDepList() {
+	public Set<Departement> fetchDepList() {
 		return departementService.fetchDepartementList();
 	}
 	
 	@GetMapping("lieuOfDepartement")
-	public List<Lieu> getLieuListByDepartementId(@RequestParam String id) {
+	public Set<Lieu> getLieuListByDepartementId(@RequestParam String id) {
 		return departementService.getLieuListByDepartementId(id);
 	}
 	

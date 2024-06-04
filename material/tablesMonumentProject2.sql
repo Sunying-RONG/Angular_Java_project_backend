@@ -5,6 +5,7 @@ drop table if exists Celebrite;
 drop table if exists AssocieA;
 drop table if exists Lieu;
 drop table if exists Departement;
+drop table if exists Admin;
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- table Lieu

@@ -1,10 +1,8 @@
 package com.example.projetJavaAvance.controller;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,12 +23,12 @@ public class LieuController {
 	private LieuService lieuService;
 	
 	@GetMapping("lieux")
-	public List<Lieu> fetchLieuList() {
+	public Set<Lieu> fetchLieuList() {
 		return lieuService.fetchLieuList();
 	}
 	
 	@GetMapping("monumentsOfLieu") // http://localhost:8080/monumentsOfLieu?id=34199
-	public List<Monument> getMonumentListByLieuId(@RequestParam String id) {
+	public Set<Monument> getMonumentListByLieuId(@RequestParam String id) {
 		return lieuService.getMonumentListByLieuId(id);
 	}
 	

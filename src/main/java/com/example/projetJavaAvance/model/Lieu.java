@@ -1,6 +1,5 @@
 package com.example.projetJavaAvance.model;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -29,13 +28,13 @@ public class Lieu {
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy="lieu")
     @JsonBackReference
-    private List<Monument> monuments = new ArrayList<>();
+    private Set<Monument> monuments;
     
     // Required by JPA
     public Lieu() {}
 
 	public Lieu(String lieu_id, String nom, float longitude, float latitude, Departement departement,
-			List<Monument> monuments) {
+			Set<Monument> monuments) {
 		super();
 		this.lieu_id = lieu_id;
 		this.nom = nom;
@@ -85,11 +84,11 @@ public class Lieu {
 		this.departement = departement;
 	}
 
-	public List<Monument> getMonuments() {
+	public Set<Monument> getMonuments() {
 		return monuments;
 	}
 
-	public void setMonuments(List<Monument> monuments) {
+	public void setMonuments(Set<Monument> monuments) {
 		this.monuments = monuments;
 	}
 

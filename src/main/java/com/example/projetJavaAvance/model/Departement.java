@@ -1,6 +1,5 @@
 package com.example.projetJavaAvance.model;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -25,7 +24,7 @@ public class Departement {
     
     @OneToMany(cascade=CascadeType.ALL, mappedBy="departement")
     @JsonBackReference
-    private List<Lieu> lieux = new ArrayList<>();
+    private Set<Lieu> lieux;
     
     @OneToOne
     @JoinColumn(name="lieu_id", referencedColumnName="lieu_id")
@@ -35,7 +34,7 @@ public class Departement {
     // Required by JPA
     public Departement() {}
 
-	public Departement(String departement_id, String nom_dep, String reg, List<Lieu> lieux, Lieu chefLieuObj) {
+	public Departement(String departement_id, String nom_dep, String reg, Set<Lieu> lieux, Lieu chefLieuObj) {
 		super();
 		this.departement_id = departement_id;
 		this.nom_dep = nom_dep;
@@ -68,11 +67,11 @@ public class Departement {
 		this.reg = reg;
 	}
 
-	public List<Lieu> getLieux() {
+	public Set<Lieu> getLieux() {
 		return lieux;
 	}
 
-	public void setLieux(List<Lieu> lieux) {
+	public void setLieux(Set<Lieu> lieux) {
 		this.lieux = lieux;
 	}
 

@@ -1,7 +1,6 @@
 package com.example.projetJavaAvance.service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +23,7 @@ public class DepartementServiceImpl implements DepartementService {
 	}
 
 	@Override
-	public List<Lieu> getLieuListByDepartementId(String departement_id) {
+	public Set<Lieu> getLieuListByDepartementId(String departement_id) {
 		Optional<Departement> departOp = departementRepository.findById(departement_id);
 		if (departOp.isPresent()) {
 			return departOp.get().getLieux();
@@ -35,8 +34,11 @@ public class DepartementServiceImpl implements DepartementService {
 	}
 
 	@Override
-	public List<Departement> fetchDepartementList() {
-		return departementRepository.findAll();
+	public Set<Departement> fetchDepartementList() {
+		List<Departement> departementList = departementRepository.findAll();
+		Set<Departement> departementSet = new HashSet<>();
+		departementSet.addAll(departementList);
+		return departementSet;
 	}
 
 	@Override
